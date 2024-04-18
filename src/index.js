@@ -6,31 +6,42 @@ import img3 from './images/pine-watt-2Hzmz15wGik-unsplash.jpg';
 
 let imageNumber = 0;
 
-function updateActiveImage(number) {
+const updateActiveImage = (number) => {
     document.querySelectorAll(".active").forEach((activeElement) => activeElement.classList.remove("active"))
     document.querySelectorAll(".image")[number].classList.add("active");
 
     document.querySelectorAll(".navigation-dot")[number].classList.add("active");
 }
 
+const scrollUp = () => {
+    if (imageNumber >= 2) {
+        imageNumber = 0
+    } else {
+        imageNumber += 1
+    }
+}
+
 document.querySelectorAll(".slider-button").forEach((sliderButton) => {
     if (sliderButton.classList.contains("slider-left")) {
             sliderButton.addEventListener(("click"), () => {
-                if (imageNumber <= 0) return
+                if (imageNumber <= 0) {
+                    imageNumber = 2
+                } else {
                     imageNumber -= 1
-                    updateActiveImage(imageNumber);
+                }
+            updateActiveImage(imageNumber);
         }) 
     }
     
     if (sliderButton.classList.contains("slider-right")) {
-        sliderButton.addEventListener(("click"), () => {
-            if (imageNumber >= 2) return
-                imageNumber += 1
-                updateActiveImage(imageNumber);
+            sliderButton.addEventListener(("click"), () => {
+            scrollUp()
+            updateActiveImage(imageNumber);
         }) 
     }
 })
 
+// Navigation dot buttons
 document.querySelectorAll(".navigation-button").forEach((navigationButton, index) => {
     navigationButton.addEventListener("click", () => {
         imageNumber = index
@@ -38,4 +49,8 @@ document.querySelectorAll(".navigation-button").forEach((navigationButton, index
     })
 })
 
-
+// Automatic scrolling
+setInterval(() => {
+    scrollUp()
+    updateActiveImage(imageNumber)
+}, 5000)
