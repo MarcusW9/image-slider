@@ -15,13 +15,28 @@ body {
   height: inherit;
 }
 
+.slider-button {
+  background-color: none;
+  border: none;
+}
+
+.arrow {
+  height: 40px;
+  width: 40px;
+}
+
 .image.active {
-  display: block
+  display: block;
 }
 
 .slider-container {
   display: flex;
   flex-direction: row;
+}
+
+.navigation-button {
+  background-color: white;
+  border: none;
 }
 
 .navigation-dots {
@@ -38,4 +53,14 @@ body {
   width: 20px;
   fill: black;
   margin: 20px;
+}
+
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
 }
