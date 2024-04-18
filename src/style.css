@@ -1,3 +1,41 @@
 body {
-  background-color: red;
+  margin: 0;
+  height: 100vh;
+}
+
+.image {
+  display: none;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: inherit;
+}
+
+.image.active {
+  display: block
+}
+
+.slider-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.navigation-dots {
+  display: flex;
+}
+
+.navigation-dot {
+  width: 20px;
+  fill: grey;
+  margin: 20px;
+}
+
+.navigation-dot.active {
+  width: 20px;
+  fill: black;
+  margin: 20px;
 }
